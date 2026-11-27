@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Modelo demonstrativo de site institucional para a Aureum Clínica Serena.">
+  <title>Aureum Clínica Serena | Cuidado próximo, em cada etapa</title>
+  <style>
+    :root{--ink:#24332f;--muted:#66736c;--paper:#f6f5ef;--white:#fffefa;--green:#718a76;--green-dark:#40594b;--gold:#bd9d5a;--line:#dce1d8}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 "Segoe UI",Arial,sans-serif}
+    a{color:inherit}
+    .demo-ribbon{padding:7px 18px;background:#25342e;color:#e8e4d7;text-align:center;font-size:10px;letter-spacing:1.6px;text-transform:uppercase}
+    .wrap{width:min(1160px,calc(100% - 40px));margin:auto}
+    .site-header{position:sticky;top:0;z-index:5;background:#f6f5eff0;border-bottom:1px solid #dce1d8;backdrop-filter:blur(14px)}
+    .nav{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;flex-direction:column;text-decoration:none;line-height:1}
+    .brand strong{font:26px Georgia,serif;letter-spacing:2px}
+    .brand span{margin-top:7px;color:var(--green-dark);font-size:9px;font-weight:700;letter-spacing:2px}
+    .nav-links{display:flex;align-items:center;gap:28px}
+    .nav-links a{text-decoration:none;color:var(--muted);font-size:13px}
+    .nav-links a:hover{color:var(--green-dark)}
+    .button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border:1px solid var(--green-dark);border-radius:999px;background:var(--green-dark);color:#fffefa;text-decoration:none;font-size:12px;font-weight:700;letter-spacing:.5px;transition:transform .2s,background .2s}
+    .button:hover{transform:translateY(-2px);background:#30483b}
+    .button.light{background:transparent;color:var(--green-dark)}
+    .hero{display:grid;grid-template-columns:1.04fr .96fr;align-items:center;gap:70px;padding:82px 0 90px}
+    .eyebrow{color:var(--green-dark);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase}
+    h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:400}
+    h1{max-width:640px;margin:17px 0 20px;font-size:clamp(48px,6.3vw,78px);line-height:1.02;letter-spacing:-2px}
+    .hero-copy>p{max-width:560px;color:var(--muted);font-size:17px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+    .hero-art{position:relative;min-height:465px;overflow:hidden;border-radius:48% 48% 18px 18px;background:radial-gradient(circle at 54% 37%,#fffdf0 0 10%,transparent 10.5%),linear-gradient(145deg,#dce6d8,#a9bca8 56%,#718a76);box-shadow:0 25px 60px #25342e1a}
+    .hero-art:before{position:absolute;content:"";width:290px;height:380px;left:50%;bottom:-100px;transform:translateX(-50%);border:1px solid #f8f6e8aa;border-radius:48% 48% 0 0}
+    .hero-art:after{position:absolute;content:"";width:200px;height:290px;left:50%;bottom:-98px;transform:translateX(-50%);border:1px solid #f8f6e888;border-radius:48% 48% 0 0}
+    .sun{position:absolute;top:67px;right:68px;width:78px;height:78px;border:1px solid #fff9;border-radius:50%;box-shadow:0 0 0 15px #ffffff18,0 0 0 31px #ffffff12}
+    .leaf{position:absolute;width:125px;height:225px;bottom:40px;left:21%;border:1px solid #f8f6e8c9;border-radius:100% 0 100% 0;transform:rotate(-25deg)}
+    .leaf:after{position:absolute;content:"";left:50%;top:10%;height:92%;border-left:1px solid #f8f6e8b0;transform:rotate(22deg)}
+    .leaf.two{left:auto;right:18%;bottom:74px;transform:rotate(35deg) scale(.8);opacity:.8}
+    .art-label{position:absolute;z-index:1;right:20px;bottom:20px;max-width:220px;padding:16px 18px;border:1px solid #ffffff99;border-radius:15px;background:#fffefaed;box-shadow:0 10px 35px #25342e18}
+    .art-label small{display:block;color:var(--green-dark);font-size:9px;font-weight:700;letter-spacing:1.5px}
+    .art-label strong{display:block;margin-top:4px;font:18px Georgia,serif}
+    .section{padding:86px 0}
+    .section.white{background:var(--white)}
+    .section-head{max-width:660px;margin:0 auto 42px;text-align:center}
+    .section-head h2{margin:10px 0;font-size:clamp(36px,4vw,52px);line-height:1.08}
+    .section-head p{color:var(--muted)}
+    .intro-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:70px;align-items:center}
+    .intro-mark{display:grid;place-items:center;min-height:310px;border-radius:18px;background:linear-gradient(145deg,#e1e8dc,#c3d0c0);color:var(--green-dark);font:76px Georgia,serif}
+    .intro-copy h2{margin:12px 0;font-size:clamp(34px,4vw,49px);line-height:1.1}
+    .intro-copy p{color:var(--muted)}
+    .service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .service-card{min-height:225px;padding:26px;border:1px solid var(--line);border-radius:16px;background:var(--white)}
+    .service-card .icon{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:#e8eee5;color:var(--green-dark);font:21px Georgia,serif}
+    .service-card h3{margin:20px 0 7px;font-size:23px}
+    .service-card p{margin:0;color:var(--muted);font-size:14px}
+    .approach{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center}
+    .approach h2{max-width:470px;margin:12px 0;font-size:clamp(36px,4vw,53px);line-height:1.08}
+    .approach p{color:var(--muted)}
+    .steps{display:grid;gap:12px}
+    .step{display:grid;grid-template-columns:48px 1fr;gap:15px;padding:18px 0;border-bottom:1px solid var(--line)}
+    .step b{color:var(--gold);font:23px Georgia,serif}
+    .step strong{font:19px Georgia,serif}
+    .step p{margin:3px 0 0;font-size:13px}
+    .contact-panel{display:flex;align-items:center;justify-content:space-between;gap:28px;padding:42px;border-radius:22px;background:var(--green-dark);color:#fffefa}
+    .contact-panel h2{margin:0;font-size:clamp(30px,4vw,44px);line-height:1.1}
+    .contact-panel p{max-width:550px;margin:10px 0 0;color:#e0e8df}
+    .contact-panel .button{flex:0 0 auto;background:#f0eadc;border-color:#f0eadc;color:var(--green-dark)}
+    footer{padding:30px 0;color:var(--muted);font-size:12px}
+    .footer-row{display:flex;justify-content:space-between;gap:18px}
+    @media(max-width:800px){.hero{grid-template-columns:1fr;gap:38px;padding-top:58px}.hero-art{min-height:390px}.intro-grid,.approach{grid-template-columns:1fr;gap:28px}.intro-mark{min-height:220px}.service-grid{grid-template-columns:1fr 1fr}.nav-links a:not(.button){display:none}}
+    @media(max-width:560px){.wrap{width:min(100% - 30px,1160px)}.nav{min-height:68px}.nav-links{gap:0}.nav-links .button{min-height:42px;padding:0 13px;font-size:10px}.hero{padding:48px 0 60px}.hero-art{min-height:330px}.section{padding:64px 0}.service-grid{grid-template-columns:1fr}.contact-panel{align-items:flex-start;flex-direction:column;padding:28px}.footer-row{flex-direction:column}}
+  </style>
+</head>
+<body>
+  <div class="demo-ribbon">Modelo demonstrativo · profissionais e conteúdo ilustrativos</div>
+  <header class="site-header">
+    <nav class="wrap nav" aria-label="Navegação principal">
+      <a class="brand" href="#inicio"><strong>AUREUM</strong><span>CLÍNICA SERENA</span></a>
+      <div class="nav-links"><a href="#especialidades">Especialidades</a><a href="#espaco">A clínica</a><a class="button" href="aureum-sites-prontos.html?modelo=Site%20Institucional#contato">Quero um site assim</a></div>
+    </nav>
+  </header>
+  <main>
+    <section class="wrap hero" id="inicio">
+      <div class="hero-copy">
+        <span class="eyebrow">Cuidado integrado, com escuta</span>
+        <h1>Um espaço para cuidar de você por inteiro.</h1>
+        <p>Um modelo institucional acolhedor para apresentar uma clínica, suas especialidades e a forma como cada pessoa é recebida.</p>
+        <div class="hero-actions"><a class="button" href="#especialidades">Conheça as especialidades</a><a class="button light" href="aureum-sites-prontos.html?modelo=Site%20Institucional#contato">Criar meu site</a></div>
+      </div>
+      <div class="hero-art" aria-hidden="true"><span class="sun"></span><span class="leaf"></span><span class="leaf two"></span><div class="art-label"><small>AUREUM CLÍNICA SERENA</small><strong>Um cuidado que começa com presença.</strong></div></div>
+    </section>
+    <section class="section white" id="espaco">
+      <div class="wrap intro-grid">
+        <div class="intro-mark" aria-hidden="true">A.</div>
+        <div class="intro-copy"><span class="eyebrow">Sobre a clínica</span><h2>Um ambiente pensado para acolher.</h2><p>Este modelo demonstra como um site institucional pode apresentar a equipe, o espaço e as especialidades, ajudando visitantes a entenderem a proposta antes de entrar em contato.</p><p>O conteúdo, as informações e os profissionais deste exemplo são ilustrativos.</p></div>
+      </div>
+    </section>
+    <section class="section" id="especialidades">
+      <div class="wrap">
+        <div class="section-head"><span class="eyebrow">Como podemos ajudar</span><h2>Especialidades em destaque</h2><p>Apresente os principais serviços da clínica com descrições claras e fáceis de encontrar.</p></div>
+        <div class="service-grid">
+          <article class="service-card"><span class="icon" aria-hidden="true">01</span><h3>Fisioterapia</h3><p>Atendimento individualizado e informações sobre as diferentes frentes de cuidado.</p></article>
+          <article class="service-card"><span class="icon" aria-hidden="true">02</span><h3>Nutrição</h3><p>Apresentação da especialidade, da abordagem profissional e das formas de atendimento.</p></article>
+          <article class="service-card"><span class="icon" aria-hidden="true">03</span><h3>Psicologia</h3><p>Um espaço para explicar a área de atuação e orientar sobre o primeiro contato.</p></article>
+        </div>
+      </div>
+    </section>
+    <section class="section white">
+      <div class="wrap approach">
+        <div><span class="eyebrow">Uma experiência simples</span><h2>Informação clara. Primeiro contato acolhedor.</h2><p>O site organiza o que a pessoa precisa saber e facilita a conversa com a equipe, sem substituir uma avaliação profissional.</p></div>
+        <div class="steps">
+          <div class="step"><b>01</b><div><strong>Conheça a clínica</strong><p>Entenda a proposta, as especialidades e o espaço.</p></div></div>
+          <div class="step"><b>02</b><div><strong>Encontre sua área</strong><p>Veja qual especialidade corresponde ao que procura.</p></div></div>
+          <div class="step"><b>03</b><div><strong>Converse com a equipe</strong><p>Faça o primeiro contato e tire dúvidas sobre o atendimento.</p></div></div>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="wrap contact-panel"><div><span class="eyebrow" style="color:#e8d5a6">Demonstração institucional</span><h2>Seu negócio também merece um espaço assim.</h2><p>Conte à Aureum sobre sua empresa e descubra qual modelo pode funcionar melhor para ela.</p></div><a class="button" href="aureum-sites-prontos.html?modelo=Site%20Institucional#contato">Falar com a Aureum ↗</a></div>
+    </section>
+  </main>
+  <footer><div class="wrap footer-row"><span>© <span id="year"></span> Aureum Clínica Serena</span><a href="aureum-sites-prontos.html">Conheça a Aureum Sites</a></div></footer>
+  <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+</body>
+</html>

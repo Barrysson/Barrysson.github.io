@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Modelo demonstrativo de site completo para a Aureum Arquitetura.">
+  <title>Aureum Arquitetura | Espaços com propósito</title>
+  <style>
+    :root{--ink:#272621;--muted:#79766d;--paper:#f2f0e9;--white:#faf9f5;--rust:#a55f42;--line:#dcd8ce;--dark:#24241f}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.65 "Segoe UI",Arial,sans-serif}
+    a{color:inherit}
+    .demo-ribbon{padding:7px 18px;background:#262620;color:#ddd8cb;text-align:center;font-size:10px;letter-spacing:1.6px;text-transform:uppercase}
+    .wrap{width:min(1200px,calc(100% - 42px));margin:auto}
+    header{position:sticky;top:0;z-index:5;background:#f2f0e9f2;border-bottom:1px solid var(--line);backdrop-filter:blur(14px)}
+    .nav{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{text-decoration:none;font:25px Georgia,serif;letter-spacing:1.4px}
+    .brand span{color:var(--rust)}
+    .nav-links{display:flex;align-items:center;gap:25px}
+    .nav-links a{text-decoration:none;color:var(--muted);font-size:12px}
+    .nav-links a:hover{color:var(--rust)}
+    .button{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 19px;background:var(--rust);border:1px solid var(--rust);color:#fff;text-decoration:none;font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;transition:background .2s,transform .2s}
+    .button:hover{background:#834831;transform:translateY(-2px)}
+    .button.ghost{background:transparent;color:var(--ink);border-color:#777268}
+    .hero{display:grid;grid-template-columns:1fr .92fr;gap:70px;align-items:center;padding:82px 0 100px}
+    .eyebrow{color:var(--rust);font-size:10px;font-weight:700;letter-spacing:2.1px;text-transform:uppercase}
+    h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:400}
+    h1{max-width:620px;margin:18px 0;font-size:clamp(52px,7vw,88px);line-height:.98;letter-spacing:-2.5px}
+    .hero p{max-width:525px;color:var(--muted);font-size:16px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:27px}
+    .architecture-art{position:relative;height:470px;overflow:hidden;background:linear-gradient(150deg,#d8d1c2,#b6a58e 58%,#817564)}
+    .architecture-art:before{position:absolute;content:"";inset:30px 28px 0;background:linear-gradient(90deg,transparent 0 8%,#f2eee4 8% 10%,transparent 10% 47%,#efe9dd 47% 50%,transparent 50%),linear-gradient(0deg,#514f45 0 13%,transparent 13% 100%);opacity:.83}
+    .architecture-art:after{position:absolute;content:"";width:170px;height:280px;right:36px;bottom:0;background:linear-gradient(90deg,#d9d3c6 0 12%,#4c5146 12% 16%,#c9c1b2 16% 78%,#625b4e 78%);box-shadow:-178px 44px 0 -48px #6c715d}
+    .art-window{position:absolute;z-index:1;right:72px;bottom:60px;width:73px;height:135px;border:7px solid #e8e1d3;background:linear-gradient(160deg,#d8dfce,#849281)}
+    .art-caption{position:absolute;z-index:2;left:20px;bottom:20px;padding:13px 15px;background:#faf9f5ed;color:var(--ink);font-size:10px;letter-spacing:1px;text-transform:uppercase}
+    .projects{padding:84px 0;background:var(--white)}
+    .section-heading{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:34px}
+    .section-heading h2{max-width:540px;margin:10px 0 0;font-size:clamp(38px,5vw,60px);line-height:1.03}
+    .section-heading p{max-width:380px;color:var(--muted)}
+    .project-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:20px}
+    .project{min-width:0}
+    .project-art{position:relative;height:300px;overflow:hidden;background:linear-gradient(145deg,#c7c0b1,#918d7b)}
+    .project-art:before{position:absolute;content:"";inset:20% 14% 0;background:linear-gradient(90deg,#e6e0d4 0 40%,#636658 40% 42%,#c5c0b2 42% 100%);clip-path:polygon(0 18%,60% 0,100% 18%,100% 100%,0 100%)}
+    .project-art:after{position:absolute;content:"";left:27%;bottom:0;width:18%;height:43%;background:repeating-linear-gradient(90deg,#525a4c 0 3px,#c7c0b1 3px 28px)}
+    .project-art.studio{background:linear-gradient(145deg,#c3b9a8,#82796b)}
+    .project-art.studio:before{inset:10% 13% 0;background:linear-gradient(90deg,#dfd8ca 0 28%,#4d5148 28% 31%,#b4aa98 31% 68%,#62665b 68% 71%,#e0d8c8 71%);clip-path:none}
+    .project-art.studio:after{left:18%;width:67%;height:32%;background:repeating-linear-gradient(0deg,#5b5e52 0 7px,#c4b9a6 7px 22px)}
+    .project-art.retreat{background:linear-gradient(160deg,#d3d9cd,#859381)}
+    .project-art.retreat:before{inset:24% 18% 0;background:linear-gradient(90deg,#e6e2d5 0 46%,#596654 46% 49%,#bcbbaa 49%);clip-path:polygon(0 16%,35% 0,100% 12%,100% 100%,0 100%)}
+    .project-art.retreat:after{left:52%;width:24%;height:54%;background:linear-gradient(90deg,#53634f 0 8%,#d1d1c0 8% 88%,#53634f 88%)}
+    .project-meta{display:flex;justify-content:space-between;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
+    .project-meta h3{margin:0;font-size:22px}
+    .project-meta span{color:var(--muted);font-size:11px}
+    .project.featured .project-art{height:420px}
+    .project-image-trigger{position:relative;display:block;width:100%;padding:0;overflow:hidden;border:0;background:transparent;text-align:left;cursor:pointer}
+    .project-image-trigger .project-art{display:block;transition:transform .35s}
+    .project-image-trigger:hover .project-art,.project-image-trigger:focus-visible .project-art{transform:scale(1.025)}
+    .project-image-trigger:after{position:absolute;left:15px;bottom:15px;content:"ABRIR PROJETO ↗";padding:8px 10px;background:#faf9f5ed;color:var(--ink);font:700 9px "Segoe UI",Arial,sans-serif;letter-spacing:1px;opacity:0;transition:opacity .2s}
+    .project-image-trigger:hover:after,.project-image-trigger:focus-visible:after{opacity:1}
+    .project-image-trigger:focus-visible,.project-title-trigger:focus-visible,.project-close:focus-visible{outline:2px solid var(--rust);outline-offset:3px}
+    .project-meta h3 .project-title-trigger{padding:0;border:0;background:transparent;color:inherit;font:inherit;line-height:inherit;text-align:left;cursor:pointer}
+    .project-title-trigger:after{content:" ↗";color:var(--rust);font:12px "Segoe UI",Arial,sans-serif}
+    .project-title-trigger:hover{color:var(--rust)}
+    .project-modal[hidden]{display:none}
+    .project-modal{position:fixed;inset:0;z-index:40;display:grid;place-items:center;padding:20px;background:#171813bd;backdrop-filter:blur(7px)}
+    .project-dialog{width:min(780px,100%);max-height:min(88vh,780px);overflow:auto;border:1px solid #fff8;background:var(--paper);box-shadow:0 24px 80px #0006}
+    .project-dialog-head{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:17px 22px;border-bottom:1px solid var(--line);background:var(--white)}
+    .project-dialog-head p{margin:3px 0 0;color:var(--muted);font-size:11px}
+    .project-close{display:grid;place-items:center;flex:0 0 40px;width:40px;height:40px;border:1px solid var(--line);border-radius:50%;background:transparent;color:var(--ink);font-size:23px;cursor:pointer}
+    .project-detail{display:grid;grid-template-columns:.82fr 1.18fr;gap:25px;padding:22px}
+    #project-detail-art{height:330px;align-self:start}
+    .project-detail-copy h2{margin:0;font-size:clamp(32px,4vw,47px);line-height:1.04}
+    .project-type{margin:8px 0 22px;color:var(--rust);font-size:10px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase}
+    .project-detail-copy h3{margin:20px 0 5px;font-size:19px}
+    .project-detail-copy p{margin:0;color:var(--muted);font-size:13px}
+    .project-highlights{display:grid;gap:9px;margin:0;padding:0;list-style:none}
+    .project-highlights li{padding-top:9px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}
+    .project-dialog-footer{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px 22px;border-top:1px solid var(--line);background:var(--white)}
+    .project-dialog-footer p{margin:0;color:var(--muted);font-size:10px}
+    .services{padding:88px 0}
+    .service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:36px}
+    .service{padding:28px;background:var(--paper)}
+    .service span{color:var(--rust);font:14px Georgia,serif}
+    .service h3{margin:16px 0 7px;font-size:24px}
+    .service p{margin:0;color:var(--muted);font-size:13px}
+    .approach{padding:90px 0;background:var(--dark);color:#f4f1e8}
+    .approach-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:80px}
+    .approach h2{max-width:430px;margin:12px 0;font-size:clamp(38px,5vw,61px);line-height:1.02}
+    .approach p{color:#c3c0b5}
+    .steps{border-top:1px solid #ffffff30}
+    .step{display:grid;grid-template-columns:55px 1fr;gap:12px;padding:19px 0;border-bottom:1px solid #ffffff30}
+    .step b{color:#d39a7d;font:21px Georgia,serif}
+    .step h3{margin:0;font-size:20px}
+    .step p{margin:4px 0 0;font-size:13px}
+    .contact{padding:88px 0}
+    .contact-inner{display:flex;justify-content:space-between;align-items:center;gap:24px;padding:38px 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+    .contact h2{max-width:660px;margin:10px 0;font-size:clamp(36px,5vw,58px);line-height:1.04}
+    footer{padding:26px 0;color:var(--muted);font-size:11px}
+    .footer-row{display:flex;justify-content:space-between;gap:15px}
+    @media(max-width:850px){.hero{grid-template-columns:1fr;gap:40px;padding-top:58px}.architecture-art{height:390px}.section-heading{align-items:flex-start;flex-direction:column;gap:10px}.project-grid{grid-template-columns:1fr 1fr}.project.featured .project-art{height:300px}.approach-grid{grid-template-columns:1fr;gap:35px}.nav-links a:not(.button){display:none}}
+    @media(max-width:580px){.wrap{width:calc(100% - 30px)}.nav{min-height:68px}.nav-links .button{min-height:40px;padding:0 11px;font-size:9px}.hero{padding:48px 0 60px}.architecture-art{height:320px}.projects,.services,.approach,.contact{padding:64px 0}.project-grid,.service-grid{grid-template-columns:1fr}.project.featured .project-art,.project-art{height:270px}.contact-inner{align-items:flex-start;flex-direction:column}.footer-row{flex-direction:column}}
+    @media(max-width:700px){.project-detail{grid-template-columns:1fr}.project-detail-art{height:220px}.project-dialog{max-height:92vh}}
+    @media(max-width:500px){.project-modal{padding:10px}.project-dialog-head,.project-dialog-footer{padding:14px}.project-detail{gap:15px;padding:14px}.project-dialog-footer{align-items:flex-start;flex-direction:column}.project-dialog-footer .button{width:100%}}
+  </style>
+</head>
+<body>
+  <div class="demo-ribbon">Modelo demonstrativo · projetos e conteúdo ilustrativos</div>
+  <header>
+    <nav class="wrap nav" aria-label="Navegação principal">
+      <a class="brand" href="#inicio">AUREUM <span>ARQUITETURA</span></a>
+      <div class="nav-links"><a href="#projetos">Projetos</a><a href="#servicos">Serviços</a><a href="#processo">Processo</a><a class="button" href="aureum-sites-prontos.html?modelo=Site%20Completo#contato">Vamos conversar</a></div>
+    </nav>
+  </header>
+  <main>
+    <section class="wrap hero" id="inicio">
+      <div>
+        <span class="eyebrow">Arquitetura · interiores · acompanhamento</span>
+        <h1>Espaços com propósito. Projetos com identidade.</h1>
+        <p>Um modelo completo para apresentar um escritório, mostrar projetos, explicar serviços e guiar cada visitante até o próximo passo.</p>
+        <div class="hero-actions"><a class="button" href="#projetos">Explorar projetos</a><a class="button ghost" href="aureum-sites-prontos.html?modelo=Site%20Completo#contato">Criar um site assim</a></div>
+      </div>
+      <div class="architecture-art" role="img" aria-label="Ilustração abstrata de uma casa contemporânea"><span class="art-window"></span><span class="art-caption">AUREUM ARQUITETURA · ESTUDO VISUAL</span></div>
+    </section>
+    <section class="projects" id="projetos">
+      <div class="wrap">
+        <div class="section-heading"><div><span class="eyebrow">Portfólio demonstrativo</span><h2>Projetos que contam histórias.</h2></div><p>Uma área de portfólio organizada dá contexto ao trabalho e permite destacar diferentes tipos de projeto.</p></div>
+        <div class="project-grid">
+          <article class="project featured"><button class="project-image-trigger" type="button" data-project="casa-horizonte" aria-label="Abrir detalhes do projeto Casa Horizonte" aria-haspopup="dialog" aria-controls="project-dialog"><span class="project-art" aria-hidden="true"></span></button><div class="project-meta"><h3><button class="project-title-trigger" type="button" data-project="casa-horizonte" aria-haspopup="dialog" aria-controls="project-dialog">Casa Horizonte</button></h3><span>Residencial · 2025</span></div></article>
+          <div>
+            <article class="project"><button class="project-image-trigger" type="button" data-project="estudio-vereda" aria-label="Abrir detalhes do projeto Estúdio Vereda" aria-haspopup="dialog" aria-controls="project-dialog"><span class="project-art studio" aria-hidden="true"></span></button><div class="project-meta"><h3><button class="project-title-trigger" type="button" data-project="estudio-vereda" aria-haspopup="dialog" aria-controls="project-dialog">Estúdio Vereda</button></h3><span>Interiores · 2024</span></div></article>
+            <article class="project" style="margin-top:25px"><button class="project-image-trigger" type="button" data-project="refugio-do-vale" aria-label="Abrir detalhes do projeto Refúgio do Vale" aria-haspopup="dialog" aria-controls="project-dialog"><span class="project-art retreat" aria-hidden="true"></span></button><div class="project-meta"><h3><button class="project-title-trigger" type="button" data-project="refugio-do-vale" aria-haspopup="dialog" aria-controls="project-dialog">Refúgio do Vale</button></h3><span>Hospitalidade · 2024</span></div></article>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="services" id="servicos">
+      <div class="wrap">
+        <span class="eyebrow">O que fazemos</span><div class="section-heading"><h2>Do primeiro traço à entrega.</h2><p>Apresente com clareza como o escritório pode acompanhar cada etapa.</p></div>
+        <div class="service-grid">
+          <article class="service"><span>01 / PROJETO</span><h3>Arquitetura</h3><p>Estudos, conceito e desenvolvimento de projetos residenciais e comerciais.</p></article>
+          <article class="service"><span>02 / INTERIORES</span><h3>Design de interiores</h3><p>Composição de ambientes, materiais, iluminação e mobiliário.</p></article>
+          <article class="service"><span>03 / OBRA</span><h3>Acompanhamento</h3><p>Organização de etapas e suporte durante a execução do projeto.</p></article>
+        </div>
+      </div>
+    </section>
+    <section class="approach" id="processo">
+      <div class="wrap approach-grid">
+        <div><span class="eyebrow" style="color:#d39a7d">Nosso processo</span><h2>Um caminho claro, do início ao espaço pronto.</h2><p>Este exemplo mostra como um site completo pode explicar o método de trabalho, alinhar expectativas e responder às principais dúvidas.</p></div>
+        <div class="steps">
+          <div class="step"><b>01</b><div><h3>Conversa inicial</h3><p>Entendemos necessidades, rotina e prioridades.</p></div></div>
+          <div class="step"><b>02</b><div><h3>Conceito e proposta</h3><p>Apresentamos direção criativa, escopo e próximos passos.</p></div></div>
+          <div class="step"><b>03</b><div><h3>Desenvolvimento</h3><p>Detalhamos o projeto e coordenamos as definições.</p></div></div>
+          <div class="step"><b>04</b><div><h3>Entrega e acompanhamento</h3><p>Organizamos os materiais finais e o suporte combinado.</p></div></div>
+        </div>
+      </div>
+    </section>
+    <section class="contact">
+      <div class="wrap contact-inner"><div><span class="eyebrow">Site completo</span><h2>Mostre a dimensão do seu trabalho com uma presença à altura.</h2></div><a class="button" href="aureum-sites-prontos.html?modelo=Site%20Completo#contato">Solicitar um projeto ↗</a></div>
+    </section>
+  </main>
+  <div class="project-modal" id="project-modal" hidden>
+    <section class="project-dialog" id="project-dialog" role="dialog" aria-modal="true" aria-labelledby="project-dialog-title" tabindex="-1">
+      <div class="project-dialog-head"><div><span class="eyebrow">Portfólio demonstrativo</span><p>Detalhes do estudo de projeto</p></div><button class="project-close" id="project-close" type="button" aria-label="Fechar detalhes do projeto">×</button></div>
+      <div class="project-detail">
+        <div class="project-art project-detail-art" id="project-detail-art" aria-hidden="true"></div>
+        <div class="project-detail-copy">
+          <h2 id="project-dialog-title"></h2>
+          <p class="project-type" id="project-dialog-type"></p>
+          <h3>Conceito</h3>
+          <p id="project-dialog-concept"></p>
+          <h3>Detalhes do projeto</h3>
+          <ul class="project-highlights" id="project-dialog-highlights"></ul>
+        </div>
+      </div>
+      <div class="project-dialog-footer"><p>Projeto, dados e imagens são fictícios e servem apenas como demonstração.</p><a class="button" href="aureum-sites-prontos.html?modelo=Site%20Completo#contato">Quero um site assim ↗</a></div>
+    </section>
+  </div>
+  <footer><div class="wrap footer-row"><span>© <span id="year"></span> Aureum Arquitetura</span><a href="aureum-sites-prontos.html">Conheça a Aureum Sites</a></div></footer>
+  <script>
+    document.getElementById('year').textContent=new Date().getFullYear();
+    const projectDetails={
+      'casa-horizonte':{
+        title:'Casa Horizonte',
+        type:'Residencial · Arquitetura e interiores',
+        art:'',
+        concept:'Uma casa térrea que conecta a área social ao jardim e mantém os ambientes íntimos mais reservados.',
+        highlights:['Sala, cozinha e varanda organizadas como um espaço integrado.','Madeira natural, pedra clara e concreto aparente em uma paleta tranquila.','Aberturas planejadas para valorizar a luz natural e a relação com o exterior.']
+      },
+      'estudio-vereda':{
+        title:'Estúdio Vereda',
+        type:'Comercial · Interiores',
+        art:'studio',
+        concept:'Um espaço de trabalho flexível, com áreas para colaboração, concentração e encontros informais.',
+        highlights:['Estações de trabalho e sala de reunião com usos bem definidos.','Marcenaria sob medida para organizar materiais e equipamentos.','Iluminação em camadas e tons naturais para criar unidade visual.']
+      },
+      'refugio-do-vale':{
+        title:'Refúgio do Vale',
+        type:'Hospitalidade · Arquitetura',
+        art:'retreat',
+        concept:'Uma hospedagem compacta que aproxima o visitante da paisagem sem abrir mão de conforto e privacidade.',
+        highlights:['Área de estar voltada para a vista e para a luz do dia.','Materiais de aparência natural que dialogam com o entorno.','Planta simples, com circulação direta entre descanso e convivência.']
+      }
+    };
+    const projectModal=document.getElementById('project-modal');
+    const projectDialog=document.getElementById('project-dialog');
+    const projectClose=document.getElementById('project-close');
+    const projectTitle=document.getElementById('project-dialog-title');
+    const projectType=document.getElementById('project-dialog-type');
+    const projectConcept=document.getElementById('project-dialog-concept');
+    const projectHighlights=document.getElementById('project-dialog-highlights');
+    const projectArt=document.getElementById('project-detail-art');
+    let activeProjectTrigger=null;
+    let previousBodyOverflow='';
+    function openProject(trigger){
+      const details=projectDetails[trigger.dataset.project];
+      if(!details)throw new Error('Não há detalhes cadastrados para este projeto.');
+      activeProjectTrigger=trigger;
+      previousBodyOverflow=document.body.style.overflow;
+      projectTitle.textContent=details.title;
+      projectType.textContent=details.type;
+      projectConcept.textContent=details.concept;
+      projectArt.className='project-art project-detail-art'+(details.art?' '+details.art:'');
+      projectHighlights.replaceChildren(...details.highlights.map(text=>{
+        const item=document.createElement('li');
+        item.textContent=text;
+        return item;
+      }));
+      projectDialog.scrollTop=0;
+      projectModal.hidden=false;
+      document.body.style.overflow='hidden';
+      projectClose.focus();
+    }
+    function closeProject(){
+      projectModal.hidden=true;
+      document.body.style.overflow=previousBodyOverflow;
+      if(activeProjectTrigger)activeProjectTrigger.focus();
+    }
+    document.querySelectorAll('[data-project]').forEach(trigger=>trigger.addEventListener('click',()=>openProject(trigger)));
+    projectClose.addEventListener('click',closeProject);
+    projectModal.addEventListener('click',event=>{if(event.target===projectModal)closeProject()});
+    document.addEventListener('keydown',event=>{
+      if(projectModal.hidden)return;
+      if(event.key==='Escape'){closeProject();return}
+      if(event.key!=='Tab')return;
+      const focusable=Array.from(projectDialog.querySelectorAll('button:not([disabled]),a[href]'));
+      const first=focusable[0];
+      const last=focusable[focusable.length-1];
+      if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus()}
+      else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus()}
+    });
+  </script>
+</body>
+</html>
